@@ -1,6 +1,5 @@
 <?
-function scandirs($start)
- {
+function scandirs($start) {
      $files = array();
      $handle = opendir($start);
      while (false !== ($file = readdir($handle)))
@@ -21,14 +20,16 @@ function scandirs($start)
      closedir($handle);
      return $files;
  }
-
 $dir = 'classes';
 $classes = scandirs($dir);
 
-foreach($classes as $className) {
-  echo $className;
-  if(file_exists($dir . '/' . $className.'.php')){
-                require_once($dir . $className.'.php');
+foreach($classes as $className)
+{
+  $className = substr($className,0,-4);
+  if(file_exists($dir . '/' . $className.'.php'))
+                {
+                require_once($dir . '/' . $className.'.php');
+                $$className = new $className;
                 }
 }
 ?>
