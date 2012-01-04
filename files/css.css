@@ -1,0 +1,23 @@
+body{
+    font-family:Arial,sans-serif;
+    margin:0 auto; 
+    padding:0;
+    color:#000;
+    background:url(files/images/fon.jpg) repeat top #353535;
+    max-width: 470px;
+}
+
+div.page{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 5px ; 
+    border : 1px solid #1f1f1f; 
+    color:#ffffff;
+     font-size:12px;
+     text-align:left;
+      -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius:10px; 
+    overflow: auto;
+    background:#D3CFCF;
+}
