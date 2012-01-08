@@ -1,16 +1,19 @@
 <?
-$menu = m::request('menu');
-$core = m::request('core');
+$view = $methods->request('view');
+$model = $methods->request('model');
 
-if ($menu) {
-    require('models/' . $menu . '.php');
-    require('views/' . $menu . '.php');
-} else if ($core) {
-    require('models/' . $core . '.php');
+readfile('header.html');
+
+if ($view) {
+    require('models/' . $view . '.php');
+    require('views/' . $view . '.php');
+} else if ($model) {
+    require('models/' . $model . '.php');
 } else  {
     require("models/index.php");
     require("views/index.php");
 }
 
+readfile('footer.html');
 
 ?>

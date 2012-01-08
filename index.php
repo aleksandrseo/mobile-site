@@ -7,26 +7,11 @@ main file
 // autoload classes
 include('_autoload.php');
 
-// on/off header and footer
-$htmlShow = false;
-if (!m::request('html')) {
-    $htmlShow = true;
-}
-
-//header
-if ($htmlShow) {
-    readfile('libs/header.html');
-}
-
 //controller
-if (!m::request('cont')) {
+if (!$methods->request('cont')) {
     require("controllers/index.php");
 } else {
-    require('controllers/' . m::request('cont') . '.php');
+    require('controllers/' . $methods->request('cont') . '.php');
 }
 
-//footer
-if ($htmlShow) {
-    readfile('libs/footer.html');
-}
 ?>
