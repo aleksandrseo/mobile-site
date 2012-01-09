@@ -25,4 +25,6 @@ public function fetch($sqlResult){
     return mysql_fetch_assoc($sqlResult);
 }
 
+}
+
 ?>
