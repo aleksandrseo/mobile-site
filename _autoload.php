@@ -20,16 +20,27 @@ function scandirs($start) {
      closedir($handle);
      return $files;
  }
-$dir = 'classes';
+ 
+// autoload classes 
+$dir = 'app/classes';
 $classes = scandirs($dir);
 
-foreach($classes as $className)
-{
+foreach($classes as $className) {
   $className = substr($className,0,-4);
   if(file_exists($dir . '/' . $className.'.php'))
                 {
                 require_once($dir . '/' . $className.'.php');
                 $$className = new $className;
+                }
+}
+// autoload models_lib
+$dir = 'app/models_lib';
+$models_lib = scandirs($dir);
+foreach($models_lib as $modelMy) {
+  $modelMy = substr($modelMy,0,-4);
+  if(file_exists($dir . '/' . $modelMy .'.php'))
+                {
+                require_once($dir . '/' . $modelMy .'.php');
                 }
 }
 ?>

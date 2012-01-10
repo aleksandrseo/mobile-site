@@ -7,11 +7,13 @@ main file
 // autoload classes
 include('_autoload.php');
 
+
+
 //controller
 if (!$methods->request('cont')) {
-    require("controllers/index.php");
+    require("app/controllers/index.php");
 } else {
-    require('controllers/' . $methods->request('cont') . '.php');
+    require('app/controllers/' . $methods->request('cont') . '.php');
 }
 
 ?>
