@@ -1,17 +1,14 @@
 <?
 class html {
-    public function __construct() {
-     $this->sign_in = $this->link('sign_in');
-     $this->sign_up = $this->link('sign_up');
-     $this->about_site = $this->link('about_site');
-     $this->about_us = $this->link('about_us');
+    public function link($link,$type = 'view'){
+        return '<a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a><br/>';
     }
-    private function link($link,$type = 'view'){
+    public function button($link,$type = 'view'){
         return '<a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
     }
     public function word($word){
-        $sign_in = 'Регистрация';
-        $sign_up = 'Вход';
+        $sign_in = 'Вход';
+        $sign_up = 'Регистрация';
         $about_site = 'Об игре';
         $about_us = 'О нас';
         return $$word;

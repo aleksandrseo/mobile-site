@@ -1,3 +1,7 @@
+<center>
+<hr>
 <?
-echo $html->about_site;
+echo $html->link('about_site');
 ?>
+Stonehenge Games, 2012
+<center/>
