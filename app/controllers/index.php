@@ -16,6 +16,6 @@ if ($view) {
     require("app/views/index.php");
 }
 
+include('app/libs/footer_menu.php');
 readfile('footer.html');
-
 ?>

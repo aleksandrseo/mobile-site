@@ -6,6 +6,13 @@ body{
     background:url(files/images/fon.jpg) repeat top #353535;
     max-width: 470px;
 }
+a{
+    color:#464951;
+    text-decoration:none;
+}
+a:hover{
+    
+}
 
 div.page{
     text-align:center;
@@ -16,9 +23,17 @@ div.page{
     color:black;
      font-size:12px;
      text-align:left;
-      -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius:10px; 
     overflow: auto;
     background:#D3CFCF;
+}
+div.button{
+    text-align:center;
+    overflow: auto;
+    background:#918C8C;
+}
+#border{
+    border:1px solid #1f1f1f;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius:10px; 
 }
