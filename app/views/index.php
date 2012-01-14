@@ -9,8 +9,8 @@
 Следи за своим районом, открывай магазины, разбирайся с конкурентами, работай с братвой, держи районы, получай бабло, опрокидывай терпил.<br/>
 
 <?
-echo $html->button('sign_up');
-echo $html->button('sign_in');
+echo $html->button('signUp');
+echo $html->button('signIn');
 ?>
 
 <?

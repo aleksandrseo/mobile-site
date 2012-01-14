@@ -33,14 +33,17 @@ foreach($classes as $className) {
                 $$className = new $className;
                 }
 }
+
 // autoload models_lib
-$dir = 'app/models_lib';
+/*
+$dir = 'app/code_lib';
 $models_lib = scandirs($dir);
 foreach($models_lib as $modelMy) {
   $modelMy = substr($modelMy,0,-4);
   if(file_exists($dir . '/' . $modelMy .'.php'))
                 {
                 require_once($dir . '/' . $modelMy .'.php');
+                
                 }
-}
+}*/
 ?>

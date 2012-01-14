@@ -1,7 +1,6 @@
 <?
-$view = $methods->request('view');
-$model = $methods->request('model');
-
+$route = $methods->request('route','string');
+$route = ($route)?($route):'index';
 ?>
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
@@ -11,22 +10,29 @@ $model = $methods->request('model');
     <link rel="stylesheet" href="files/css.css" type="text/css"/>
 </head>
 <div class="page" id="border">
+    
 <?
-include('app/libs/header_menu.php');
+include('app/libs/headerMenu.php');
+// view's name
+echo '<center><b>' . $html->word($route) . '</b></center>';
 
-if ($view) {
-    if (file_exists('app/models/' . $view . '.php')) {
-        require('app/models/' . $view . '.php');
-    }
-    require('app/views/' . $view . '.php');
-} else if ($model) {
-    require('app/models/' . $model . '.php');
-} else  {
-    require("app/models/index.php");
-    require("app/views/index.php");
+
+// model
+if (file_exists('app/models/'.$route.'.php')) {
+    require('app/models/'.$route.'.php');
 }
+if (file_exists('app/code_lib/'.$route.'.php')) {
+    require('app/code_lib/'.$route.'.php');
+}
+//message
+var_dump($methods->isMessage($message));
+if ($methods->isMessage($message)) {
+    var_dump($message);
+}
+//content
+require("app/views/$route.php");
 
-include('app/libs/footer_menu.php');
+// footer
+include('app/libs/footerMenu.php');
 ?>
-</div>
 </body>
