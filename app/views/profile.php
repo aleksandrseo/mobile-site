@@ -1,12 +1,23 @@
 <h3>Главная</h3>
 <?
 $filter = array(
-   '_id' => $_SESSION['id']
-);        
+   'nick' => $methods->request('nick')
+);
 
 $profile = $users->getProfile($filter);
+
+$block = array('_id','pass','pass1','connection','db');
+
 foreach ($profile as $key => $value) {
-    echo $html->words($key) . ': ' . $value . '<br/>';
+    if (!in_array($key,$block)) {
+        if (empty($value)) {
+            $value = 'не указан';
+        }
+        if ($key == 'img') {
+            $value = 'files/profile/'.$value.'.png';
+        }
+        echo $html->words($key) . ': ' . $value . '<br/>';
+    }
 }
 
 ?>

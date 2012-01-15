@@ -9,7 +9,7 @@ class html {
     public function button($link,$type = 'route'){
         return '<a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
     }
-    public function word($word){
+    public function word($word,$name = false){
         
         $word = explode('&',$word);
         $word = $word[0];
@@ -19,8 +19,20 @@ class html {
         $signUp = 'Регистрация';
         $aboutSite = 'Об игре';
         $aboutUs = 'О нас';
+        $shops = 'Магазины';
+        $banks = 'Банки';
+        $gangs = 'Группировки';
+        $streets = 'Улицы';
+        $protect = 'Охрана';
+        $search = 'Поиск';
         $profile = 'Профиль';
-    return $$word;
+        $logout = 'Выход';
+        var_dump($name);
+        if ($name) {
+            return $name;
+        } else {
+            return $$word;
+        }    
     }
     
     
@@ -35,7 +47,17 @@ class html {
     function words($word){
         $nick = 'Ник';
         $email = 'email';
-    return $$word;   
+        $birthday = 'Дата';
+        $exp = 'Опыт';
+        $ties = 'Связи';
+        $height = 'Рост';
+        $weight = 'Масса';
+        $power = 'Сила';
+        if (isset($$word)) {
+            return $$word;
+        } else {
+            return false;
+        }
     }
 }
 ?>

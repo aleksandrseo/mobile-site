@@ -12,10 +12,10 @@ if ($methods->isRequest()) {
             'pass' => $users->pass
         );
         
-        $collection = $db->db->selectCollection('users');
+        $collection = $db->selectCollection('users');
         $cursor = $collection->find($filter);
         foreach ($cursor as $obj) {
-            $_SESSION['id'] = $obj['_id'];
+            $_SESSION['nick'] = $obj['nick'];
             $route = 'profile';
             break;
         }

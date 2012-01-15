@@ -42,7 +42,9 @@ var_dump($route);
 require("app/views/$route.php");
 
 // footer
-include('app/libs/centerMenu.php');
+if (isset($_SESSION['nick'])) {
+    include('app/libs/centerMenu.php');
+}
 
 // footer
 include('app/libs/footerMenu.php');

@@ -1,16 +1,25 @@
 <?
 class users{
     
+public $img;
 public $nick;
 public $pass;
 public $pass1;
 public $email;
+public $birthday;
+public $exp;
+public $ties;
+public $height;
+public $weight;
+public $power;
 public $connection;
 public $db;
 
 public function __construct(){
     global $db;
     $this->db = $db;
+    
+    $this->img = 'default';
 }
 
 public function getProfile($filter){
@@ -24,7 +33,5 @@ public function getProfile($filter){
     }
     return $profile;
 }
-
-
 }
 ?>

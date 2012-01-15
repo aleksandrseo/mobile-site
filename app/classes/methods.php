@@ -40,7 +40,14 @@ function isEmail($email){
   $s=filter_var($email, FILTER_VALIDATE_EMAIL);
   return !empty($s);
 }
-
+function isAuth(){
+    global $_SESSION;
+    if (isset($_SESSION['id'])) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 }
 ?>

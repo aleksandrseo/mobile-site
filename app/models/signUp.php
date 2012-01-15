@@ -13,7 +13,7 @@ if ($methods->isRequest()) {
         $filter = array(
             'nick' => $users->nick
         );                
-        $collection = $db->db->selectCollection('users');
+        $collection = $db->selectCollection('users');
         $cursor = $collection->find($filter);
         foreach ($cursor as $obj) {
            if (isset($obj)) {
@@ -26,7 +26,7 @@ if ($methods->isRequest()) {
             $messages->bad[] = 'Пароль и повтор пароля не совпадают.';
         }     
             if ((!$messages->have($messages->bad))) {
-                $collection = $db->db->selectCollection('users');
+                $collection = $db->selectCollection('users');
                 $collection->insert($users,true);
                 $messages->good[] = 'Регистрация успешна';
             }
