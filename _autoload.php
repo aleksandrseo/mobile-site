@@ -21,6 +21,11 @@ function scandirs($start) {
      return $files;
  }
  
+// load db class
+$mongo = new Mongo();
+$connection = $mongo;
+$db = $connection->selectDB('virtualworld'); 
+ 
 // autoload classes 
 $dir = 'app/classes';
 $classes = scandirs($dir);
@@ -32,18 +37,17 @@ foreach($classes as $className) {
                 require_once($dir . '/' . $className.'.php');
                 $$className = new $className;
                 }
+    
 }
 
 // autoload models_lib
-/*
-$dir = 'app/code_lib';
+$dir = 'app/func_lib';
 $models_lib = scandirs($dir);
 foreach($models_lib as $modelMy) {
   $modelMy = substr($modelMy,0,-4);
   if(file_exists($dir . '/' . $modelMy .'.php'))
                 {
                 require_once($dir . '/' . $modelMy .'.php');
-                
                 }
-}*/
+}
 ?>

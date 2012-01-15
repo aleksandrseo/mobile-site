@@ -9,7 +9,14 @@ public function request($name,$type = 'string') {
             return $_REQUEST[$name];
         } else return 'falseType';        
     } else {
-        return '';
+        return NULL;
+    }
+}
+public function isRequest(){
+    if (isset($_REQUEST['route']) and count($_REQUEST)>1) {
+        return true;
+    } else {
+        return false;
     }
 }
 public function isNull($var){
@@ -19,20 +26,21 @@ public function isNull($var){
         return false;
     }
 }
-public function stringLenght($string,$min,$max){
-    if ((strlen($string) >= 1) and ((strlen($string) < $min) or (strlen($string) > $max))) {
+
+public function stringLenght($string,$min = 1,$max = 64){
+    if ((strlen($string) < $min) or (strlen($string) > $max)){
+        return true;
+    } else if ($string == NULL) {
         return true;
     } else {
         return false;
     }
 }
-public function isMessage($message){
-    if (isset($message) && count($message)>0) {
-        return $message;
-    } else {
-        return false;
-    }
+function isEmail($email){
+  $s=filter_var($email, FILTER_VALIDATE_EMAIL);
+  return !empty($s);
 }
+
 
 }
 ?>
