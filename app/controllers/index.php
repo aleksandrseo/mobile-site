@@ -53,10 +53,10 @@ require("app/views/$route.php");
 
 echo '<hr/>';
 if ($methods->isLogged()) {
-    echo $html->img('virts') . ' ' . $profile['virts'] . ' ';
-    echo $html->img('reals') . ' ' . $profile['reals'] . ' ';
-    echo $html->img('power') . ' ' . $profile['power'] . ' ';
-    echo $html->img('ties') . ' ' . $profile['ties'] . ' ';
+    echo $html->lineLink('virts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
+    echo $html->lineLink('reals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
+    echo $html->lineLink('power',$html->img('power') . ' ' . $profile['power'] . ' ');
+    echo $html->lineLink('ties',$html->img('ties') . ' ' . $profile['ties'] . ' ');
     echo '<hr/>';
 }
 

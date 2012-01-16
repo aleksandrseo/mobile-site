@@ -62,6 +62,8 @@ class html {
     function imgStreet($img){
         return '<img src="files/streets/'.$img.'.png" width="20px" height="20px">';
     }
-    
+    function lineLink($name,$text) {
+        return '<a style="text-decoration:none;" href="index.php?profileEdit&'.$name.'=yes">'.$text.'</a>';
+    }
 }
 ?>
