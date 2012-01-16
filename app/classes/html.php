@@ -4,7 +4,7 @@ class html {
         return '<a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a><br/>';
     }
     public function linkBack($link,$type = 'route'){
-        return '<a href="index.php?' . $type . '=' . $link . '">Назад</a><br/>';
+        return '<br/><a href="index.php?' . $type . '=' . $link . '">Назад</a><br/>';
     }
     public function button($link,$type = 'route'){
         return '<a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
@@ -26,13 +26,13 @@ class html {
         $protect = 'Охрана';
         $search = 'Поиск';
         $profile = 'Профиль';
-        $logout = 'Выход';
-        var_dump($name);
-        if ($name) {
-            return $name;
-        } else {
-            return $$word;
-        }    
+        $logout = 'Выйти';
+        
+        $streetsAdd = 'Создать улицу';
+        return $$word;
+    }
+    public function img($var){
+        return '<img src="files/images/'.$var.'.png" width="18px" height="18px">';
     }
     
     
@@ -53,11 +53,15 @@ class html {
         $height = 'Рост';
         $weight = 'Масса';
         $power = 'Сила';
-        if (isset($$word)) {
-            return $$word;
-        } else {
-            return false;
-        }
+        $img = 'Аватарка';
+        $reals = 'Зелень';
+        $virts = 'Бабло';
+        $pubStreet = 'Контролирует';
+        return $$word;
     }
+    function imgStreet($img){
+        return '<img src="files/streets/'.$img.'.png" width="20px" height="20px">';
+    }
+    
 }
 ?>

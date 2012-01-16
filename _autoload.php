@@ -36,8 +36,7 @@ foreach($classes as $className) {
                 {
                 require_once($dir . '/' . $className.'.php');
                 $$className = new $className;
-                }
-    
+                }    
 }
 
 // autoload models_lib

@@ -14,12 +14,22 @@ $message = array();
 <div class="page" id="border">
     
 <?
-
+if ($methods->isLogged()) {
+// about user
+$filter = array(
+       'nick' => $_SESSION['nick']
+);
+$profile = $users->getProfile($filter);
+echo $users->virts . '' .$users->reals . '';
 //code
-include('app/libs/headerMenu.php');
+    include('app/libs/headerMenu.php');
+}
+
+
 // view's name
 echo '<center><b>' . $html->word($route) . '</b></center>';
 
+echo '<hr>';
 
 // model
 /*if (file_exists('app/code_lib/'.$route.'.php')) {
@@ -37,18 +47,30 @@ if (($messages->have($messages->bad))) {
 if (($messages->have($messages->good))) {
     $html->showMes($messages->good);
 }
-var_dump($route);
+
 //content
 require("app/views/$route.php");
+
+echo '<hr/>';
+if ($methods->isLogged()) {
+    echo $html->img('virts') . ' ' . $profile['virts'] . ' ';
+    echo $html->img('reals') . ' ' . $profile['reals'] . ' ';
+    echo $html->img('power') . ' ' . $profile['power'] . ' ';
+    echo $html->img('ties') . ' ' . $profile['ties'] . ' ';
+    echo '<hr/>';
+}
 
 // footer
 if (isset($_SESSION['nick'])) {
     include('app/libs/centerMenu.php');
 }
 
+if ($methods->isLogged()){
+    echo $html->link('logout');
+}
+
 // footer
 include('app/libs/footerMenu.php');
 
-echo $_SESSION['id'];
 ?>
 </body>

@@ -1,12 +1,14 @@
-<h3>Главная</h3>
 <?
-$filter = array(
-   'nick' => $methods->request('nick')
-);
 
+$block = array('_id','pass','pass1','connection','db','nick','virts','reals');
+
+// about user
+$filter = array(
+       'nick' => $_SESSION['nick']
+);
 $profile = $users->getProfile($filter);
 
-$block = array('_id','pass','pass1','connection','db');
+echo '<center><b>'.$profile['nick'].'</center></b>';
 
 foreach ($profile as $key => $value) {
     if (!in_array($key,$block)) {
@@ -14,7 +16,7 @@ foreach ($profile as $key => $value) {
             $value = 'не указан';
         }
         if ($key == 'img') {
-            $value = 'files/profile/'.$value.'.png';
+            $value = '<br/><img src="files/'.$value.'.png" width="64px" height="128px"/>';
         }
         echo $html->words($key) . ': ' . $value . '<br/>';
     }

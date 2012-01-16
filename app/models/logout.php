@@ -1,0 +1,4 @@
+<?
+$methods->isLogout();
+$route = 'index';
+?>

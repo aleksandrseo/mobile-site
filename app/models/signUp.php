@@ -3,6 +3,9 @@ $users->nick = $methods->request('nick');
 $users->pass = $methods->request('pass');
 $users->pass1 = $methods->request('pass1');
 $users->email = $methods->request('email');
+$users->reals = 50;
+$users->virts = 1000;
+$users->img = 'default';
 
 if ($methods->isRequest()) {
     $messages->bad = $signUp->input($users);
@@ -13,8 +16,7 @@ if ($methods->isRequest()) {
         $filter = array(
             'nick' => $users->nick
         );                
-        $collection = $db->selectCollection('users');
-        $cursor = $collection->find($filter);
+        $cursor = $db->find('users',$filter);
         foreach ($cursor as $obj) {
            if (isset($obj)) {
             $messages->bad[] = 'Данный ник уже занят. Попробуйте другой.';
@@ -26,8 +28,7 @@ if ($methods->isRequest()) {
             $messages->bad[] = 'Пароль и повтор пароля не совпадают.';
         }     
             if ((!$messages->have($messages->bad))) {
-                $collection = $db->selectCollection('users');
-                $collection->insert($users,true);
+                $db->insert('users',$users);
                 $messages->good[] = 'Регистрация успешна';
             }
     }

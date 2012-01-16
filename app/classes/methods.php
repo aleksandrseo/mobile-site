@@ -40,13 +40,18 @@ function isEmail($email){
   $s=filter_var($email, FILTER_VALIDATE_EMAIL);
   return !empty($s);
 }
-function isAuth(){
+function isLogged(){
     global $_SESSION;
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['nick'])) {
         return true;
     } else {
         return false;
     }
+}
+function isLogout(){
+    global $_SESSION;
+    unset($_SESSION);
+    session_destroy();
 }
 
 }

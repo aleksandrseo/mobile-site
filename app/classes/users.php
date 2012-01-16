@@ -8,12 +8,15 @@ public $pass1;
 public $email;
 public $birthday;
 public $exp;
-public $ties;
+public $ties = 0;
 public $height;
 public $weight;
-public $power;
+public $reals = 50;
+public $virts = 2000;
+public $power = 0;
 public $connection;
 public $db;
+public $pubStreet;
 
 public function __construct(){
     global $db;
