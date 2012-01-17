@@ -1,15 +1,15 @@
 <?
-$users->nick = $methods->request('nick');
-$users->pass = $methods->request('pass');
+$input->nick = $methods->request('nick');
+$input->pass = $methods->request('pass');
 
 if ($methods->isRequest()) {
-    $messages->bad = $signIn->input($users);
+    $messages->bad = $signIn->input($input);
     
     if ((!$messages->have($messages->bad))) {
                 
         $filter = array(
-            'nick' => $users->nick,
-            'pass' => $users->pass
+            'nick' => $input->nick,
+            'pass' => $input->pass
         );
         $searchedUsers = 0;
         
@@ -18,20 +18,21 @@ if ($methods->isRequest()) {
             $_SESSION['nick'] = $obj['nick'];
                   
             $searchedUsers++;
+            $filter = array('nick'=>$_SESSION['nick']);
+            $users = $db->findOne('users',$filter );
             $route = 'profile';
             break;
         }
         
-        $obj = (object) array_merge((array) $obj, (array) $users);
-            
-        $filter = array(
-            'nick' => $users->nick
+        /*$obj = (object) array_merge((array) $obj, (array) $users);            
+        $filter = array(            'nick' => $users->nick
         );
-        $db->update('users',$filter,$obj);
+        $db->update('users',$filter,$obj);*/
         
         if ($searchedUsers == 0) {
             $messages->bad[] = 'Ник или пароль неверные. Попробуйте еще раз.';
         }
     }
+
 }
 ?>

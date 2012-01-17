@@ -1,19 +1,16 @@
 <?
+$input->nick = $methods->request('nick');
 
-$block = array('_id','pass','pass1','connection','db','nick','virts','reals');
-
-// about user
-$filter = array(
-       'nick' => $_SESSION['nick']
-);
-$profile = $users->getProfile($filter);
-
-echo '<center><b>'.$profile['nick'].'</center></b>';
-
-foreach ($profile as $key => $value) {
+if ($users['nick'] != $input->nick) {
+    $filter = array('nick'=>$input->nick);
+    $users = $db->findOne('users',$filter );
+}
+    
+$block = array('_id','pass','pass1','exp','ties','power','virts','reals');
+foreach ($users as $key => $value) {
     if (!in_array($key,$block)) {
         if (empty($value)) {
-            $value = 'не указан';
+            $value = '';
         }
         if ($key == 'img') {
             $value = '<br/><img src="files/'.$value.'.png" width="64px" height="128px"/>';

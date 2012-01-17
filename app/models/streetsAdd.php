@@ -1,10 +1,14 @@
 <?
+
+
 $streets->name = $methods->request('streetName','string');
 $streets->img = 'city';
+$streets->keyUser = $users['_id'];
+$streets->timeCreate = time();
 
 if ($methods->isRequest()) {
 
-    $streets->add($streets);
+    $db->insert('streets',$streets);
     $messages->good[]='Улица создана';
     $route = 'streets';
 }

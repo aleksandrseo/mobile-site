@@ -15,20 +15,11 @@ $message = array();
     
 <?
 if ($methods->isLogged()) {
-// about user
-$filter = array(
-       'nick' => $_SESSION['nick']
-);
-$profile = $users->getProfile($filter);
-echo $users->virts . '' .$users->reals . '';
-//code
-    include('app/libs/headerMenu.php');
-}
 
-
-// view's name
 echo '<center><b>' . $html->word($route) . '</b></center>';
-
+$filter = array('nick'=>$_SESSION['nick']);
+$users = $db->findOne('users',$filter );
+}
 echo '<hr>';
 
 // model
@@ -50,13 +41,13 @@ if (($messages->have($messages->good))) {
 
 //content
 require("app/views/$route.php");
-
 echo '<hr/>';
+
 if ($methods->isLogged()) {
-    echo $html->lineLink('virts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
-    echo $html->lineLink('reals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
-    echo $html->lineLink('power',$html->img('power') . ' ' . $profile['power'] . ' ');
-    echo $html->lineLink('ties',$html->img('ties') . ' ' . $profile['ties'] . ' ');
+    echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . (($users['virts'])?$users['virts']:0) . ' ');
+    echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . (($users['reals'])?$users['reals']:0) . ' ');
+    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . (($users['power'])?$users['power']:0) . ' ');
+    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . (($users['ties'])?$users['ties']:0) . ' ');
     echo '<hr/>';
 }
 
