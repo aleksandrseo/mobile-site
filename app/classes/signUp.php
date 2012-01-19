@@ -11,9 +11,6 @@ $res = array();
         if (methods::stringLenght($users->pass,4,30)) {
             $res[]='Пароль должен быть от 4 до 30 символов';
         }
-        if (methods::stringLenght($users->pass1,4,30)) {
-            $res[]='Пароль должен быть от 4 до 30 символов';
-        }
         if (isset($users->email) and methods::isEmail($users->email)) {
             $res[]='Email должен быть введен в верном формате';
         }

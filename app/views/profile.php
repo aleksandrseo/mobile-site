@@ -1,14 +1,12 @@
 <?
-$input->nick = $methods->request('nick');
+$nick = ($methods->request('nick','string'))?$methods->request('nick','string'):$_SESSION['nick'];
 
-if ($users['nick'] != $input->nick) {
-    $filter = array('nick'=>$input->nick);
-    $users = $db->findOne('users',$filter );
-}
+$filter = array('nick' => $nick);
+$users = $db->findOne('users',$filter );
     
-$block = array('_id','pass','pass1','exp','ties','power','virts','reals');
+$allow = array('nick','exp','img','ties','power','virts','reals');
 foreach ($users as $key => $value) {
-    if (!in_array($key,$block)) {
+    if (in_array($key,$allow)) {
         if (empty($value)) {
             $value = '';
         }

@@ -1,7 +1,6 @@
 <?
 $route = $methods->request('route','string');
 $route = ($route)?($route):'index';
-
 $message = array();
 ?>
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
@@ -14,13 +13,15 @@ $message = array();
 <div class="page" id="border">
     
 <?
-if ($methods->isLogged()) {
-
-echo '<center><b>' . $html->word($route) . '</b></center>';
-$filter = array('nick'=>$_SESSION['nick']);
-$users = $db->findOne('users',$filter );
+// get info about user
+$filter = array();
+if (isset($_SESSION['nick'])) {
+    $filter = array('nick'=>$_SESSION['nick']);
 }
-echo '<hr>';
+$users = $db->findOne('users',$filter );
+
+// header
+echo '<center><b>Игрок ' . $users['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
 
 // model
 /*if (file_exists('app/code_lib/'.$route.'.php')) {
@@ -29,7 +30,9 @@ echo '<hr>';
 }*/
 if (file_exists('app/models/'.$route.'.php')) {
     require('app/models/'.$route.'.php');
+    
 }
+
 //message
 if (($messages->have($messages->bad))) {
     $html->showMes($messages->bad);
@@ -46,8 +49,8 @@ echo '<hr/>';
 if ($methods->isLogged()) {
     echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . (($users['virts'])?$users['virts']:0) . ' ');
     echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . (($users['reals'])?$users['reals']:0) . ' ');
-    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . (($users['power'])?$users['power']:0) . ' ');
-    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . (($users['ties'])?$users['ties']:0) . ' ');
+    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . ((isset($users['power']))?$users['power']:0) . ' ');
+    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . ((isset($users['ties']))?$users['ties']:0) . ' ');
     echo '<hr/>';
 }
 

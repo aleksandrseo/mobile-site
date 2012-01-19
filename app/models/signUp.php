@@ -1,7 +1,9 @@
 <?
+unset($users);
+
 $users->nick = $methods->request('nick');
 $users->pass = $methods->request('pass');
-$users->pass1 = $methods->request('pass1');
+$pass1 = $methods->request('pass1');
 $users->email = $methods->request('email');
 $users->reals = 50;
 $users->virts = 1000;
@@ -11,7 +13,6 @@ if ($methods->isRequest()) {
     $messages->bad = $signUp->input($users);
     
     if ((!$messages->have($messages->bad))) {
-        
         // nick
         $filter = array(
             'nick' => $users->nick
@@ -23,14 +24,15 @@ if ($methods->isRequest()) {
             break;
            }
         }
-        // pass == pass1
-        if ($users->pass != $users->pass1) {
+        if ($users->pass != $pass1) {
             $messages->bad[] = 'Пароль и повтор пароля не совпадают.';
         }     
             if ((!$messages->have($messages->bad))) {
                 $db->insert('users',$users);
                 $messages->good[] = 'Регистрация успешна';
-            }
+                $_SESSION['nick'] = $users->nick;
+                $route = 'profile';
+            }           
     }
 }
 ?>

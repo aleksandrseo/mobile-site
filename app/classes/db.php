@@ -22,11 +22,11 @@ public function findOne($table,$filter){
     }
 }
 
-
 public function insert($table,$add){
     $collection = $this->db->selectCollection($table);
     $collection->insert($add,true);
 }
+
 public function update($table,$filter,$new_obj){
     $options['multiple'] = false;
     $collection = $this->db->selectCollection($table);

@@ -16,18 +16,11 @@ if ($methods->isRequest()) {
         $cursor = $db->find('users',$filter);        
         foreach ($cursor as $obj) {
             $_SESSION['nick'] = $obj['nick'];
-                  
             $searchedUsers++;
-            $filter = array('nick'=>$_SESSION['nick']);
-            $users = $db->findOne('users',$filter );
             $route = 'profile';
-            break;
         }
         
-        /*$obj = (object) array_merge((array) $obj, (array) $users);            
-        $filter = array(            'nick' => $users->nick
-        );
-        $db->update('users',$filter,$obj);*/
+        
         
         if ($searchedUsers == 0) {
             $messages->bad[] = 'Ник или пароль неверные. Попробуйте еще раз.';

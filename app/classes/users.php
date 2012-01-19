@@ -1,6 +1,7 @@
 <?
-class users{
+class users extends Mongo{
     
+public $id;
 public $img;
 public $nick;
 public $pass;
@@ -13,6 +14,8 @@ public $weight;
 public $reals;
 public $virts;
 public $power;
+
+
 
 }
 ?>

@@ -4,7 +4,7 @@ class html {
         return '<a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a><br/>';
     }
     public function linkText($link,$text = false,$type = 'route'){
-        return '<a href="index.php?' . $type . '=' . $link . '">' . $text . '</a>';
+        return '<a href="index.php?' . $type . '=' . $link . '">' . $text . '</a> ';
     }
     public function linkBack($link,$type = 'route'){
         return '<br/><a href="index.php?' . $type . '=' . $link . '">Назад</a><br/>';

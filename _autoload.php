@@ -26,7 +26,8 @@ $mongo = new Mongo();
 $connection = $mongo;
 $db = $connection->selectDB('virtualworld'); 
  
-// autoload classes 
+// autoload classes
+
 $dir = 'app/classes';
 $classes = scandirs($dir);
 
@@ -40,6 +41,7 @@ foreach($classes as $className) {
 }
 
 // autoload models_lib
+/*
 $dir = 'app/func_lib';
 $models_lib = scandirs($dir);
 foreach($models_lib as $modelMy) {
@@ -48,5 +50,5 @@ foreach($models_lib as $modelMy) {
                 {
                 require_once($dir . '/' . $modelMy .'.php');
                 }
-}
+}*/
 ?>
