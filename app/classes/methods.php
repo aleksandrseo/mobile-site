@@ -42,7 +42,7 @@ function isEmail($email){
 }
 function isLogged(){
     global $_SESSION;
-    if (isset($_SESSION['nick'])) {
+    if (isset($_SESSION['_id'])) {
         return true;
     } else {
         return false;
@@ -53,9 +53,9 @@ function isLogout(){
     global $profile;
     unset($profile);
     unset($_SESSION);
+    
     $dir = 'app/classes';
     $classes = scandirs($dir);
-
     foreach($classes as $className) {
       $className = substr($className,0,-4);
       if(file_exists($dir . '/' . $className.'.php'))
@@ -64,6 +64,14 @@ function isLogout(){
                     }    
     }
     session_destroy();
+}
+
+public function var_dumps($var){
+    $html='';
+    $html.='<pre>';
+    $html.=var_dump($var);
+    $html.='</pre>';
+    return $html;
 }
 
 public function courseVirts($time){

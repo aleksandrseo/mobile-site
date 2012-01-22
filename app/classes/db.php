@@ -25,7 +25,7 @@ public function findOneId($table,$filter){
     $collection = $this->db->selectCollection($table);
     $result = $collection->find($filter);
     foreach($result as $obj) {
-        return $obj;
+        return $obj['_id'];
     break;
     }
 }

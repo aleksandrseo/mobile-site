@@ -7,6 +7,8 @@ $pass1 = $methods->request('pass1');
 $users->email = $methods->request('email');
 $users->reals = 50;
 $users->virts = 1000;
+$users->power = 0;
+$users->ties = 0;
 $users->img = 'default';
 
 if ($methods->isRequest()) {

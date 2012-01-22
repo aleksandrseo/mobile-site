@@ -1,10 +1,11 @@
 <?
-$nick = ($methods->request('nick','string'))?$methods->request('nick','string'):$_SESSION['nick'];
+$profileId = $methods->request('id','string');
+$profileId = ($profileId)?($profileId):$_SESSION['_id'];
 
-$filter = array('nick' => $nick);
+$filter = array('_id' => $profileId);
 $profile = $db->findOne('users',$filter );
 
-$allow = array('nick','exp','img','ties','power','virts','reals');
+$allow = array('img');
 foreach ($profile as $key => $value) {
     if (in_array($key,$allow)) {
         if (empty($value)) {
@@ -13,8 +14,7 @@ foreach ($profile as $key => $value) {
         if ($key == 'img') {
             $value = '<br/><img src="files/'.$value.'.png" width="64px" height="128px"/>';
         }
-        echo $html->words($key) . ': ' . $value . '<br/>';
+        echo /*$html->words($key) . ': ' .*/ $value . '<br/>';
     }
 }
-
 ?>

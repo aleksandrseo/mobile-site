@@ -1,16 +1,16 @@
 <?
 class html {
     public function link($link,$text = false,$type = 'route'){
-        return '<a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a><br/>';
+        return ' <a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a> <br/>';
     }
     public function linkText($link,$text = false,$type = 'route'){
-        return '<a href="index.php?' . $type . '=' . $link . '">' . $text . '</a> ';
+        return ' <a href="index.php?' . $type . '=' . $link . '">' . $text . '</a> ';
     }
     public function linkBack($link,$type = 'route'){
-        return '<br/><a href="index.php?' . $type . '=' . $link . '">Назад</a><br/>';
+        return '<br/> <a href="index.php?' . $type . '=' . $link . '">Назад</a> <br/>';
     }
     public function button($link,$type = 'route'){
-        return '<a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
+        return ' <a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
     }
     public function word($word,$name = false){
         
@@ -43,7 +43,7 @@ class html {
         }
     }
     public function img($var){
-        return '<img src="files/images/'.$var.'.png" width="18px" height="18px">';
+        return '<img style="margin-top:-20px;" src="files/images/'.$var.'.png" width="18px" height="14px">';
     }
     
     

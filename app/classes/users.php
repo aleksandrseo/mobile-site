@@ -15,9 +15,16 @@ public $reals;
 public $virts;
 public $power;
 
+public function getProfile($idProfile){
+    global $db;
+    return $db->findOne('users',array('_id'=>$idProfile));
+}
+
 public function changeParameters(){
 
 }
+
+
 
 }
 ?>
