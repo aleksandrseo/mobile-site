@@ -1,7 +1,7 @@
 <?
-class users extends Mongo{
+class users{
     
-public $id;
+public $_id;
 public $img;
 public $nick;
 public $pass;
@@ -15,7 +15,9 @@ public $reals;
 public $virts;
 public $power;
 
+public function changeParameters(){
 
+}
 
 }
 ?>

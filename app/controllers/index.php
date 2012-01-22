@@ -2,6 +2,7 @@
 $route = $methods->request('route','string');
 $route = ($route)?($route):'index';
 $message = array();
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
@@ -14,14 +15,17 @@ $message = array();
     
 <?
 // get info about user
-$filter = array();
-if (isset($_SESSION['nick'])) {
-    $filter = array('nick'=>$_SESSION['nick']);
-}
-$users = $db->findOne('users',$filter );
+$filterProfile = array();
+if (isset($_SESSION['_id'])) {
+    $filter = array('_id'=>$_SESSION['_id']);
+    $profile = $db->findOne('users',$filterProfile);
+} else $profile = NULL;
 
+var_dump($profile);
+
+//$users->changeUsersParameters();
 // header
-echo '<center><b>Игрок ' . $users['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
+echo '<center><b>Игрок ' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
 
 // model
 /*if (file_exists('app/code_lib/'.$route.'.php')) {
@@ -32,7 +36,6 @@ if (file_exists('app/models/'.$route.'.php')) {
     require('app/models/'.$route.'.php');
     
 }
-
 //message
 if (($messages->have($messages->bad))) {
     $html->showMes($messages->bad);
@@ -41,16 +44,16 @@ if (($messages->have($messages->bad))) {
 if (($messages->have($messages->good))) {
     $html->showMes($messages->good);
 }
-
 //content
 require("app/views/$route.php");
 echo '<hr/>';
 
+
 if ($methods->isLogged()) {
-    echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . (($users['virts'])?$users['virts']:0) . ' ');
-    echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . (($users['reals'])?$users['reals']:0) . ' ');
-    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . ((isset($users['power']))?$users['power']:0) . ' ');
-    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . ((isset($users['ties']))?$users['ties']:0) . ' ');
+    echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . (($profile['virts'])?$profile['virts']:0) . ' ');
+    echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . (($profile['reals'])?$profile['reals']:0) . ' ');
+    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . ((isset($profile['power']))?$profile['power']:0) . ' ');
+    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . ((isset($profile['ties']))?$profile['ties']:0) . ' ');
     echo '<hr/>';
 }
 
@@ -65,6 +68,8 @@ if ($methods->isLogged()){
 
 // footer
 include('app/libs/footerMenu.php');
-
+if (isset($_SESSION['nick'])) {
+    var_dump($_SESSION['nick']);
+}
 ?>
 </body>

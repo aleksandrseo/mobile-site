@@ -4,16 +4,17 @@
 $rise = ($methods->request('rise','int'))?($methods->request('rise','int')):0;
 
 $cursor = $db->find('streets',array());
+//var_dump($cursor->count());
 $cursor->limit(7)->skip(0);
 foreach($cursor as $streets) {
     echo $html->imgStreet($streets['img']);
     echo $streets['name'] . ' ';
-    $res = round((time() - $streets['timeCreate'])/60);
-    echo $res . ' ';
-    
-    if ($streets['keyUser'] == $users['_id']) {
-        //echo $html->linkText('profile&nick='.$_SESSION['nick'].'',$_SESSION['nick']) . ' *';
-        echo $html->linkText('streets/sGet&streetId='.$streets['_id'],'Забрать бабло');
+    echo $methods->courseVirts($streets['timeCreate']);
+ 
+    if ($streets['keyUser'] == $profile['_id']) {
+        
+        //echo $html->linkText('profile&nick='.$_SESSION['nick'].'',$_SESSION['nick']) . ' ';
+        echo $html->linkText('streets/sGet&streetId='.$streets['_id'],'Сбор бабла');
     } else {
         $filter = array(
             '_id' => $streets['keyUser']

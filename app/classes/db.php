@@ -21,6 +21,14 @@ public function findOne($table,$filter){
     break;
     }
 }
+public function findOneId($table,$filter){
+    $collection = $this->db->selectCollection($table);
+    $result = $collection->find($filter);
+    foreach($result as $obj) {
+        return $obj;
+    break;
+    }
+}
 
 public function insert($table,$add){
     $collection = $this->db->selectCollection($table);
@@ -30,6 +38,7 @@ public function insert($table,$add){
 public function update($table,$filter,$new_obj){
     $options['multiple'] = false;
     $collection = $this->db->selectCollection($table);
+    
     $collection->update($filter,$new_obj,$options);
 }
 public function del(){

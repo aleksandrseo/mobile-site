@@ -3,6 +3,7 @@ class messages{
     
 public $good = array();
 public $bad = array();
+public $npc = array();
 
 
 public function have($var){

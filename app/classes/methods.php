@@ -50,8 +50,24 @@ function isLogged(){
 }
 function isLogout(){
     global $_SESSION;
+    global $profile;
+    unset($profile);
     unset($_SESSION);
+    $dir = 'app/classes';
+    $classes = scandirs($dir);
+
+    foreach($classes as $className) {
+      $className = substr($className,0,-4);
+      if(file_exists($dir . '/' . $className.'.php'))
+                    {
+                    unset($className);
+                    }    
+    }
     session_destroy();
+}
+
+public function courseVirts($time){
+    return round((time() - $time)/60);
 }
 
 }

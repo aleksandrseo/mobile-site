@@ -47,10 +47,16 @@ class html {
     }
     
     
-    function showMes($messages){
+    function showMes($messages,$npc = false){
     echo '<center>';
     foreach ($messages as $message) {
-        echo '* ' . $message . ' *<br/>';       
+        echo '<div class="message_good" id="border">';
+        if ($npc == true) {
+           
+            echo '<img src=/files/nps.jpg width="48px" height="32px">';
+        }
+        echo $message;
+        echo '</div>';       
     }
     echo '</center>';
     }
@@ -75,6 +81,9 @@ class html {
     }
     function lineLink($route,$text) {
         return '<a style="text-decoration:none;" href="index.php?route='.$route.'">'.$text.'</a>';
+    }
+    function message($var){
+        return '<div class="message">fggfgf'.$var.'</div>';
     }
 }
 ?>

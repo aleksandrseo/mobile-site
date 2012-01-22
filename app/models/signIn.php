@@ -15,7 +15,7 @@ if ($methods->isRequest()) {
         
         $cursor = $db->find('users',$filter);        
         foreach ($cursor as $obj) {
-            $_SESSION['nick'] = $obj['nick'];
+            $_SESSION['_id'] = $obj['_id'];
             $searchedUsers++;
             $route = 'profile';
         }
