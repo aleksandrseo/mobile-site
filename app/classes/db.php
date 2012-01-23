@@ -41,8 +41,9 @@ public function update($table,$filter,$new_obj){
     
     $collection->update($filter,$new_obj,$options);
 }
-public function del(){
-    
+public function delete($table,$filter = array()){
+    $collection = $this->db->selectCollection($table);
+    return $collection->remove($filter);
 }
 
 public function rename(){

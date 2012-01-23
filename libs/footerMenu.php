@@ -2,7 +2,7 @@
 <hr>
 <?
 if ($methods->isLogged()) {
-    echo $html->linkText('profile&nick='.$_SESSION['_id'].'','Мой профиль') . ' ';
+    echo $html->linkText('profile&nick='.$_SESSION['_id'].'','My profile') . ' ';
 }
 echo $html->link('aboutSite');
 ?>

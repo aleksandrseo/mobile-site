@@ -20,8 +20,6 @@ if ($methods->isRequest()) {
             $route = 'profile';
         }
         
-        
-        
         if ($searchedUsers == 0) {
             $messages->bad[] = 'Ник или пароль неверные. Попробуйте еще раз.';
         }

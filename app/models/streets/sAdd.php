@@ -11,7 +11,7 @@ if ($methods->isRequest()) {
     if ($db->findOne('streets',$filter) == NULL)
         {
             $db->insert('streets',$streets);
-            $messages->good[]='Улица построена';
+            $messages->good[]='You have street';
             $route = 'streets/s';
         }
 }

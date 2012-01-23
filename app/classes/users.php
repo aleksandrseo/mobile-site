@@ -1,6 +1,6 @@
 <?
 class users{
-    
+
 public $_id;
 public $img;
 public $nick;
@@ -14,6 +14,12 @@ public $weight;
 public $reals;
 public $virts;
 public $power;
+public $level;
+
+public function __construct(){
+    global $db;
+    $this->db = $db;
+}
 
 public function getProfile($idProfile){
     global $db;

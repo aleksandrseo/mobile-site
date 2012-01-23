@@ -11,12 +11,11 @@ $filterUser['_Id'] = $db->findOneId('users',array('_id' => new MongoId($infoStre
 if ($filterUser['_Id'] == $profile['_id']) {
 
     // NO SQL
-    
+        
     // update user's money
     $db->update('users',
                 array('_id' => $filterUser['_Id']),
-                array('$inc' => array('virts' => $methods->courseVirts($infoStreet['timeCreate']) ),
-                      '$set' => array('ties' => 10 )
+                array('$inc' => array('virts' => $methods->courseVirts($infoStreet['timeCreate']))
                      )
                 );
     // update street's time
@@ -24,11 +23,10 @@ if ($filterUser['_Id'] == $profile['_id']) {
                 array('_id' => $infoStreet['_id']),
                 array('$set' => array('timeCreate' => time() ))
                 );
-    // update user's info
+    // get user's info
     $profile = $users->getProfile($profile['_id']);
-    
     // show message
-    $messages->good[] = 'Бабло получено';    
+    $messages->good[] = 'Virts+';    
 }
 
 $route = 'streets/s';

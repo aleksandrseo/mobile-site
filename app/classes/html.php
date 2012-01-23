@@ -7,12 +7,45 @@ class html {
         return ' <a href="index.php?' . $type . '=' . $link . '">' . $text . '</a> ';
     }
     public function linkBack($link,$type = 'route'){
-        return '<br/> <a href="index.php?' . $type . '=' . $link . '">Назад</a> <br/>';
+        return '<br/> <a href="index.php?' . $type . '=' . $link . '">Back</a> <br/>';
     }
     public function button($link,$type = 'route'){
         return ' <a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
     }
+    public function linkProfile($name){
+        return '<a href="index.php?profile='.$name.'">'.$name.'</a>';
+    }
     public function word($word,$name = false){
+        
+        $word = explode('&',$word);
+        $word = $word[0];
+        
+        $m['iхndex'] = 'Start';
+        $m['signIn'] = 'SignIn';
+        $m['signUp'] = 'SignUp';
+        $m['aboutSite'] = 'About Game';
+        $m['aboutUs'] = 'About Us';
+        $m['shops'] = 'Shops';
+        $m['banks'] = 'Banks';
+        $m['gangs'] = 'Gangs';
+        $m['streets'] = 'Streets';
+        $m['protect'] = 'Protect';
+        $m['search'] = 'Search';
+        $m['profile'] = 'Profile';
+        $m['logout'] = 'Logout';
+        $m['streetsAdd'] = 'New street';
+        $m['profileEdit'] = 'Your parameters';
+        $m['user/uVirts'] = 'Virts';
+        $m['user/uReals'] = 'Reals';
+        $m['user/uTies'] = 'Popular';
+        $m['user/uPower'] = 'Power';
+        if (isset($m[$word])) {
+            return $m[$word];
+        } else {
+            return 'Page';
+        }
+    }
+    public function word1($word,$name = false){
         
         $word = explode('&',$word);
         $word = $word[0];
@@ -62,6 +95,21 @@ class html {
     }
     
     function words($word){
+        $nick = 'Nick';
+        $email = 'email';
+        $birthday = 'birthday';
+        $exp = 'experience';
+        $ties = 'Authority';
+        $height = 'Height';
+        $weight = 'Weight';
+        $power = 'Power';
+        $img = 'Avatar';
+        $reals = 'reals';
+        $virts = 'virts';
+        $pubStreet = 'Player';
+        return $$word;
+    }
+    function words1($word){
         $nick = 'Ник';
         $email = 'email';
         $birthday = 'Дата';

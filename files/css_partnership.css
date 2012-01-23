@@ -41,13 +41,3 @@ div.message_good{
     border:1px solid orange;
     background-color:orange;
 }
-div#center{
-    text-align: :center;
-}
-textarea{
-    width:95%;
-    height:60px;
-}
-.bottomLine{
-    bottom-line:1px solid black;
-}

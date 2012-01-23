@@ -10,8 +10,7 @@ $message = array();
     <title>Онлайн-игра НаРайоне.моби</title>
     <link rel="stylesheet" href="files/css.css" type="text/css"/>
 </head>
-<div class="page" id="border">
-<div style="text-align: right"><a href=""><img src="files/reload.png"></a></div>
+<div class="page" id="border">    
 <?
 
 if ($route == 'signIn') {
@@ -39,7 +38,6 @@ if (($messages->have($messages->good))) {
     $html->showMes($messages->good);
 }
 //content
-
 require("app/views/$route.php");
 if (isset($backPage)) {
     echo $html->linkBack($backPage);

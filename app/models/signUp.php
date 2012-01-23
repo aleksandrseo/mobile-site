@@ -32,9 +32,10 @@ if ($methods->isRequest()) {
             if ((!$messages->have($messages->bad))) {
                 $db->insert('users',$users);
                 $messages->good[] = 'Регистрация успешна';
-                $_SESSION['nick'] = $users->nick;
+                $_SESSION['_id'] = $users->_id;
                 $route = 'profile';
             }           
     }
 }
+$backPage = 'index';
 ?>

@@ -24,7 +24,7 @@ function scandirs($start) {
 // load db class
 $mongo = new Mongo();
 $connection = $mongo;
-$db = $connection->selectDB('virtualworld'); 
+$db = $connection->selectDB('virtualworld');
  
 // autoload classes
 

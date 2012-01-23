@@ -1,9 +1,7 @@
 <?
 echo $html->link('profile&nick='.$profile['nick'].'');
 echo '<br/>';
-echo $html->linkText('streets/s','Улицы').'<br/>';
-echo $html->link('banks');
-echo '<br/>';
-echo $html->link('search');
+echo $html->linkText('streets/s','Streets').'<br/>';
+echo $html->linkText('chat','Chat');
 echo '<br/>';
 ?>
