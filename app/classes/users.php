@@ -15,6 +15,9 @@ public $reals;
 public $virts;
 public $power;
 public $level;
+public $referalls = array();
+public $streets = array();
+public $constuctions = array();
 
 public function __construct(){
     global $db;

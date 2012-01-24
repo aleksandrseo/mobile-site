@@ -22,7 +22,7 @@ if ($cursor->count() == 0) {
 foreach($cursor as $streets) {
     
     echo $html->imgStreet($streets['img']);
-    echo $streets['name'] . ' | ';
+    echo $html->linkText('streets/street&id='.$streets['_id'].'',$streets['name'] . '');
      
     if ($streets['keyUser'] == $profile['_id']) { // your street
          

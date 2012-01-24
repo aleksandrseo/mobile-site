@@ -23,9 +23,6 @@ if ($methods->isLogged()) {
    $profile = NULL;
 }
 
-// header
-echo '<center><b>' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
-
 if (file_exists('app/models/'.$route.'.php')) {
     require('app/models/'.$route.'.php');
     
@@ -33,20 +30,25 @@ if (file_exists('app/models/'.$route.'.php')) {
 //message
 if (($messages->have($messages->bad))) {
     $html->showMes($messages->bad);
+    echo '<br/>';
 }
 //message
 if (($messages->have($messages->good))) {
     $html->showMes($messages->good);
+    echo '<br/>';
 }
 //content
+// header
+echo '<center><b>' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center>';
 
 require("app/views/$route.php");
 if (isset($backPage)) {
     echo $html->linkBack($backPage);
 }
-echo '<hr/>';
+
 
 if ($methods->isLogged()) {
+    echo '<hr/>';
     echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
     echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
     echo $html->lineLink('user/uPower',$html->img('power') . ' ' . $profile['power'] . ' ');

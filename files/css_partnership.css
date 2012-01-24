@@ -4,7 +4,7 @@ body{
     padding:0;
     color:black;
     background:url(files/images/fon.jpg) repeat top #353535;
-    max-width: 470px;
+    width: 1000px;
 }
 a{
     color:#464951;

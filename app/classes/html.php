@@ -3,6 +3,9 @@ class html {
     public function link($link,$text = false,$type = 'route'){
         return ' <a href="index.php?' . $type . '=' . $link . '">' . $this->word($link) . '</a> <br/>';
     }
+    public function linkCont($link,$text = false,$type = 'route'){
+        return ' <a href="index.php?cont=partnership&' . $type . '=' . $link . '">' . $text . '</a> <br/>';
+    }
     public function linkText($link,$text = false,$type = 'route'){
         return ' <a href="index.php?' . $type . '=' . $link . '">' . $text . '</a> ';
     }
@@ -15,7 +18,7 @@ class html {
     public function linkProfile($name){
         return '<a href="index.php?profile='.$name.'">'.$name.'</a>';
     }
-    public function word($word,$name = false){
+    public function word1($word,$name = false){
         
         $word = explode('&',$word);
         $word = $word[0];
@@ -45,7 +48,7 @@ class html {
             return 'Page';
         }
     }
-    public function word1($word,$name = false){
+    public function word($word,$name = false){
         
         $word = explode('&',$word);
         $word = $word[0];
@@ -69,6 +72,7 @@ class html {
         $m['user/uReals'] = 'Золото';
         $m['user/uTies'] = 'Связи';
         $m['user/uPower'] = 'Сила';
+        $m['partnership'] = 'Партнерская программа';
         if (isset($m[$word])) {
             return $m[$word];
         } else {
@@ -94,7 +98,7 @@ class html {
     echo '</center>';
     }
     
-    function words($word){
+    function words1($word){
         $nick = 'Nick';
         $email = 'email';
         $birthday = 'birthday';
@@ -109,7 +113,7 @@ class html {
         $pubStreet = 'Player';
         return $$word;
     }
-    function words1($word){
+    function words($word){
         $nick = 'Ник';
         $email = 'email';
         $birthday = 'Дата';

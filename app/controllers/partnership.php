@@ -7,14 +7,23 @@ $message = array();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Онлайн-игра НаРайоне.моби</title>
-    <link rel="stylesheet" href="files/css.css" type="text/css"/>
+    <title>Партнерская программа Stonehenge Games</title>
+    <link rel="stylesheet" href="files/css_partnership.css" type="text/css"/>
 </head>
+<div class="menu">
+<?
+// footer
+if ($methods->isLogged()){
+    include('libs/partnership/centerMenu.php');
+    echo $html->link('logout');
+}
+?>
+</div>
 <div class="page" id="border">    
 <?
 
 if ($route == 'signIn') {
-    require('app/models/signIn.php');    
+    require('app/models/partnership/signIn.php');    
 }
 if ($methods->isLogged()) {
    $profile = $users->getProfile($_SESSION['_id']);
@@ -25,8 +34,8 @@ if ($methods->isLogged()) {
 // header
 echo '<center><b>' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
 
-if (file_exists('app/models/'.$route.'.php')) {
-    require('app/models/'.$route.'.php');
+if (file_exists('app/models/partnership/'.$route.'.php')) {
+    require('app/models/partnership/'.$route.'.php');
     
 }
 //message
@@ -38,7 +47,7 @@ if (($messages->have($messages->good))) {
     $html->showMes($messages->good);
 }
 //content
-require("app/views/$route.php");
+require("app/views/partnership/$route.php");
 if (isset($backPage)) {
     echo $html->linkBack($backPage);
 }
@@ -53,13 +62,7 @@ if ($methods->isLogged()) {
 }
 
 // footer
-if ($methods->isLogged()){
-    include('libs/centerMenu.php');
-    echo $html->link('logout');
-}
-
-// footer
-include('libs/footerMenu.php');
+include('libs/partnership/footerMenu.php');
 echo $profile['nick'];
 ?>
 </body>
