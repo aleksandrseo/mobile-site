@@ -18,6 +18,7 @@ public $level;
 public $referalls = array();
 public $streets = array();
 public $constuctions = array();
+protected $db;
 
 public function __construct(){
     global $db;
@@ -27,10 +28,6 @@ public function __construct(){
 public function getProfile($idProfile){
     global $db;
     return $db->findOne('users',array('_id'=>$idProfile));
-}
-
-public function changeParameters(){
-
 }
 
 

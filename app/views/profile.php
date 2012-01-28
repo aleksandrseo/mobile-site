@@ -7,7 +7,7 @@ $profile = $db->findOne('users',$filter );
 
 $allow = array('img');
 foreach ($profile as $key => $value) {
-    if (in_array($key,$allow)) {
+   
         if (empty($value)) {
             $value = '';
         }
@@ -15,6 +15,6 @@ foreach ($profile as $key => $value) {
             $value = '<br/><img src="files/'.$value.'.png" width="64px" height="128px"/>';
         }
         echo /*$html->words($key) . ': ' .*/ $value . '<br/>';
-    }
+  
 }
 ?>

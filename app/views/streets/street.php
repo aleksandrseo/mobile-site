@@ -1,19 +1,11 @@
 <?
-$streetId = ($methods->request('id','street'));
-$streetId = ($streetId)?($streetId):NULL;
+echo 'street :' . $infoStreet['name'] . '<br/>';
+echo 'owner : ' . $html->linkProfile($infoUser['nick']) . '<br/>';
 
-if ($streetId) {
-    $streetId = new MongoId($streetId);
+var_dump($constructions->type());
+?>
 
-    $filter = array('_id' => $streetId);
-    
-    $street = $db->findOne('streets',$filter);
-    var_dump($street);
-    echo $street['name'] . '<br/>';
-    echo $street['keyUser'];
-    
-}
 
-echo '<br>';
-echo $html->linkText('streets/s','back<br/>');
+<?
+echo $html->linkText('constructions/cAdd','Build object');
 ?>

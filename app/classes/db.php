@@ -21,15 +21,22 @@ public function findOne($table,$filter){
     break;
     }
 }
-public function findOneId($table,$filter){
+public function findOneId($table,$filter,$parameter = '_id'){
     $collection = $this->db->selectCollection($table);
     $result = $collection->find($filter);
     foreach($result as $obj) {
-        return $obj['_id'];
+        return $obj[$parameter];
     break;
     }
 }
-
+public function getObjectParameter($table,$idObject,$parameter){
+    $tmp = array();     
+    $res = $this->findOne($table,array('_id'=>$idObject));
+    foreach($res as $value=>$key) {
+        if (in_array($value,$parameter)) $tmp[$value] = $key;         
+    };
+    return $tmp;
+}
 public function insert($table,$add){
     $collection = $this->db->selectCollection($table);
     $collection->insert($add,true);
