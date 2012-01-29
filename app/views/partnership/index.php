@@ -7,11 +7,3 @@ Email:<br/><input type="text" name="email" value="<? echo $methods->request('ema
 <input class="button" id="border" type="submit" value="SignUp">
 </form>
 
-
-Вход
-<form method="post" action="index.php?route=signIn">
-Nick<br/><input type="text" name="nick"><br>
-Pass:<br/><input type="text" name="pass"><br>
-<input class="button" id="border" type="submit" value="SignIn"><br/>
-</form>
-

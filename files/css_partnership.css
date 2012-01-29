@@ -37,7 +37,27 @@ div.button{
     -webkit-border-radius: 10px;
     border-radius:10px; 
 }
-div.message_good{
-    border:1px solid orange;
-    background-color:orange;
+div.menu{
+    float:left;
+    width:200px;
+    text-align:center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 5px ; 
+    border : 1px solid #1f1f1f; 
+    color:black;
+     font-size:12px;
+     text-align:left;
+    overflow: auto;
+    background:#D3CFCF;
+}
+div.page_in{
+    margin-left:20px;
+    padding:20px 20px 20px 20px;
+    float:left;
+    width:700px;
+    border:1px solid black;
+}
+h3{
+    text-align: center;
 }

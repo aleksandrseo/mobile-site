@@ -10,16 +10,25 @@ $message = array();
     <title>Партнерская программа Stonehenge Games</title>
     <link rel="stylesheet" href="files/css_partnership.css" type="text/css"/>
 </head>
-<div class="menu">
+<div class="page" id="border">
+
+<div class="header">
 <?
-// footer
-if ($methods->isLogged()){
-    include('libs/partnership/centerMenu.php');
-    echo $html->link('logout');
-}
+echo '<h3>Партнерская программа</h3>';
 ?>
 </div>
-<div class="page" id="border">    
+
+<div class="menu" id="border">
+Вход
+<form method="post" action="index.php?route=signIn">
+Nick<br/><input type="text" name="nick"><br>
+Pass:<br/><input type="text" name="pass"><br>
+<input class="button" id="border" type="submit" value="SignIn"><br/>
+</form>
+
+</div>
+
+<div class="page_in" id="border">
 <?
 
 if ($route == 'signIn') {
@@ -32,7 +41,7 @@ if ($methods->isLogged()) {
 }
 
 // header
-echo '<center><b>' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center><hr>';
+echo '<center><b>' . $profile['nick'] . '</b></center>';
 
 if (file_exists('app/models/partnership/'.$route.'.php')) {
     require('app/models/partnership/'.$route.'.php');
@@ -51,18 +60,20 @@ require("app/views/partnership/$route.php");
 if (isset($backPage)) {
     echo $html->linkBack($backPage);
 }
-echo '<hr/>';
 
 if ($methods->isLogged()) {
     echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
     echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
     echo $html->lineLink('user/uPower',$html->img('power') . ' ' . $profile['power'] . ' ');
     echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . $profile['ties'] . ' ');
-    echo '<hr/>';
 }
+?>
+</div>
 
+<?
 // footer
 include('libs/partnership/footerMenu.php');
 echo $profile['nick'];
 ?>
+</div>
 </body>

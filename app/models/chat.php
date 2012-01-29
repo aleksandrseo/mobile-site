@@ -2,13 +2,31 @@
 //input
 $rise = ($methods->request('rise','int'))?($methods->request('rise','int')):0;
 
+//object query
+$cursor = $db->find('chat',array());
+$cursor->sort(array('_id'=>-1))->limit(10)->skip($rise);
+
+// inputs
 if ($methods->isRequest())
 {
+    // error
     if (!isset($_REQUEST['message'])) {
-        $methods->bad[] = 'Please, eneter message';
+        $messages->bad[] = 'Please, eneter message';
+    }
+    if ($methods->request('message')=='') {
+        $messages->bad[] = 'Null messages';
     }
     
-    if (count($methods->bad) == 0) {
+    if ( count($messages->bad) == 0) {
+    foreach($cursor as $message) {
+        if ($methods->request('message')==$message['text']) {
+            $messages->bad[] = 'Repeat message';
+            break;
+        }
+    }
+    }        
+        
+    if ( count($messages->bad) == 0) {
         $message = array(
         'nick' => $profile['nick'],
         'text' => $methods->request('message'),
@@ -19,23 +37,5 @@ if ($methods->isRequest())
     }
     
 }
-//code
-$filter = array();
-$cursor = $db->find('chat',$filter);
-$cursor->limit(10)->skip($rise);
-foreach($cursor as $message) {
 
-    echo $html->linkProfile($message['nick']) . ' ';
-    echo date("h:i A",$message['date']) . '<br/>';
-    echo $message['text'] . '<br/>';
-}
-
-echo '<br/>';
-if (($rise-10) >= 0) {
-    echo $html->linkText('chat&rise='.($rise-10).'','back').' ';
-}
-if (($rise+10) <= $cursor->count()) {
-    echo $html->linkText('chat&rise='.($rise+10).'','next').' ';
-}
-echo '<br/>';
 ?>

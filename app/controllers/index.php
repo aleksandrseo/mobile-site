@@ -13,6 +13,7 @@ $message = array();
 <div class="page" id="border">
 <div style="text-align: right"><a href=""><img src="files/reload.png"></a></div>
 <?
+global $users;
 
 if ($route == 'signIn') {
     require('app/models/signIn.php');    
