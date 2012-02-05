@@ -17,9 +17,8 @@ if ($methods->isRequest()) {
         foreach ($cursor as $obj) {
             $_SESSION['_id'] = $obj['_id'];
             $searchedUsers++;
-            $route = 'profile';
-        }
-        
+            $route = 'users/profile';
+        }        
         if ($searchedUsers == 0) {
             $messages->bad[] = 'Ник или пароль неверные. Попробуйте еще раз.';
         }

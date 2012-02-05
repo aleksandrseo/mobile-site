@@ -1,6 +1,5 @@
 <?
 if ($methods->isLogged()) {
-    $route = 'profile';
+    $route = 'users/profile';
 }
-
 ?>

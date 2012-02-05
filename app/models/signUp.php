@@ -33,7 +33,7 @@ if ($methods->isRequest()) {
                 $db->insert('users',$users);
                 $messages->good[] = 'Регистрация успешна';
                 $_SESSION['_id'] = $users->_id;
-                $route = 'profile';
+                $route = 'users/profile';
             }           
     }
 }

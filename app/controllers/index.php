@@ -1,4 +1,5 @@
 <?
+// route
 $route = $methods->request('route','string');
 $route = ($route)?($route):'index';
 $message = array();
@@ -15,6 +16,7 @@ $message = array();
 <?
 global $users;
 
+
 if ($route == 'signIn') {
     require('app/models/signIn.php');    
 }
@@ -24,10 +26,17 @@ if ($methods->isLogged()) {
    $profile = NULL;
 }
 
+//model
 if (file_exists('app/models/'.$route.'.php')) {
+    if (substr($route, -1) == '/') {
+    $route = $route.'index';
+    }
     require('app/models/'.$route.'.php');
-    
 }
+
+//
+
+
 //message
 if (($messages->have($messages->bad))) {
     $html->showMes($messages->bad);
@@ -42,6 +51,7 @@ if (($messages->have($messages->good))) {
 // header
 echo '<center><b>' . $profile['nick'] . ' - ' . $html->word($route) . '</b></center>';
 
+
 require("app/views/$route.php");
 if (isset($backPage)) {
     echo $html->linkBack($backPage);
@@ -50,16 +60,20 @@ if (isset($backPage)) {
 
 if ($methods->isLogged()) {
     echo '<hr/>';
-    echo $html->lineLink('user/uVirts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
-    echo $html->lineLink('user/uReals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
-    echo $html->lineLink('user/uPower',$html->img('power') . ' ' . $profile['power'] . ' ');
-    echo $html->lineLink('user/uTies',$html->img('ties') . ' ' . $profile['ties'] . ' ');
+    echo $html->lineLink('users/uVirts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
+    echo $html->lineLink('users/uReals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
+    echo $html->lineLink('users/uPower',$html->img('power') . ' ' . $profile['power'] . ' ');
+    echo $html->lineLink('users/uTies',$html->img('ties') . ' ' . $profile['ties'] . ' ');
     echo '<hr/>';
 }
 
-// footer
+// menu
 if ($methods->isLogged()){
-    include('libs/centerMenu.php');
+    echo $html->linkText('users/profile','My profile') . ' '.'<br/><br/>';
+    echo $html->linkText('objects/streets/s','Улицы').'<br/>';
+    echo $html->linkText('objects/constructions/c','Собственность').'<br/>';
+    echo $html->linkText('chat','Чат').'<br/>';
+    echo $html->linkText('users/all','Все пользователи').'<br/><br/>';
     echo $html->link('logout');
 }
 
