@@ -11,6 +11,12 @@ include('_autoload.php');
 //sessions support
 session_start();
 
+//count users
+$countUserCursor = $db->find('users',array());
+$countUserCursor = $countUserCursor->count();
+
+//$_COOKIE = $methods->generateString();
+
 //controller
 if (!$methods->request('cont')) {
     require("app/controllers/index.php");

@@ -60,10 +60,7 @@ if (isset($backPage)) {
 
 if ($methods->isLogged()) {
     echo '<hr/>';
-    echo $html->lineLink('users/uVirts',$html->img('virts') . ' ' . $profile['virts'] . ' ');
-    echo $html->lineLink('users/uReals',$html->img('reals') . ' ' . $profile['reals'] . ' ');
-    echo $html->lineLink('users/uPower',$html->img('power') . ' ' . $profile['power'] . ' ');
-    echo $html->lineLink('users/uTies',$html->img('ties') . ' ' . $profile['ties'] . ' ');
+    $html->userParameters($profile);
     echo '<hr/>';
 }
 
@@ -73,12 +70,34 @@ if ($methods->isLogged()){
     echo $html->linkText('objects/streets/s','Улицы').'<br/>';
     echo $html->linkText('objects/constructions/c','Собственность').'<br/>';
     echo $html->linkText('chat','Чат').'<br/>';
-    echo $html->linkText('users/all','Все пользователи').'<br/><br/>';
-    echo $html->link('logout');
+    echo $html->linkText('users/all','Все пользователи (' . $countUserCursor . ')').'<br/>';
 }
 
 // footer
 include('libs/footerMenu.php');
 echo $profile['nick'];
+?>
+
+<?
+if ($route == 'index') {
+?>
+<script type="text/javascript" src="http://mobtop.ru/c/23781.js">
+</script>
+<noscript>
+<a href="http://mobtop.ru/in/23781"><img src="http://mobtop.ru/23781.gif" alt="MobTop.Ru - Рейтинг и статистика мобильных сайтов"/></a>
+</noscript>
+<a href="http://waplog.net/c.shtml?424849"><img src="http://c.waplog.net/424849.cnt" alt="waplog" /></a>
+<?
+} else {
+?>
+<script type="text/javascript" src="http://mobtop.ru/c/23782.js">
+</script>
+<noscript>
+<a href="http://mobtop.ru/in/23782">
+<img src="http://mobtop.ru/23782.gif" alt="MobTop.Ru - Рейтинг и статистика мобильных сайтов"/></a>
+</noscript>
+<a href="http://waplog.net/c.shtml?424850"><img src="http://c.waplog.net/424850.cnt" alt="waplog" /></a>
+<?
+}
 ?>
 </body>

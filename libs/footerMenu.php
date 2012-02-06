@@ -2,10 +2,15 @@
 <hr>
 <?
 if ($methods->isLogged()) {
-    echo $html->linkText('users/profile&nick='.$_SESSION['_id'].'','My profile') . ' ';
+    echo $html->linkText('users/profile','Main') . ' ';
+    echo $html->link('logout');
+} 
+
+if (!$methods->isLogged()) {
+    echo $html->linkText('users/all','Всего игроков ' . $countUserCursor . '') . '<br>';
+    echo $html->linkCont('index','Партнерская программа');
+    echo $html->link('aboutSite');
 }
-echo $html->link('aboutSite');
-//echo $html->linkCont('index','Партнерская программа');
 ?>
 Stonehenge Games, 2012
 <center/>

@@ -1,6 +1,8 @@
 <?
 foreach($cursor as $user) {
-    echo '<a href="index.php?route=users/profile&id='.$user['_id'].'">' . $user['nick'] . '</a><br/>';
+    echo $html->linkProfile($user['nick']);
+    echo ' ';
+    echo $html->userParameters($user) . '<br/>';
 }
 
 echo '<br/>';

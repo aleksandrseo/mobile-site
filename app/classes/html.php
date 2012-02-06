@@ -16,7 +16,7 @@ class html {
         return ' <a href="index.php?' . $type . '=' . $link . '"><div class="button" id="border">' . $this->word($link) . '</div></a><br/>';
     }
     public function linkProfile($name){
-        return '<a href="index.php?profile='.$name.'">'.$name.'</a>';
+        return '<div style="width:100px; float:left;"><a href="index.php?profile='.$name.'">'.$name.'</a></div>';
     }
     public function word1($word,$name = false){
         
@@ -136,6 +136,12 @@ class html {
     }
     function message($var){
         return '<div class="message">fggfgf'.$var.'</div>';
+    }
+    function userParameters($profile){
+        echo $this->lineLink('users/uPower',$this->img('power') . ' ' . $profile['power'] . ' ');
+        echo $this->lineLink('users/uTies',$this->img('ties') . ' ' . $profile['ties'] . ' ');
+        echo $this->lineLink('users/uVirts',$this->img('virts') . ' ' . $profile['virts'] . ' ');
+        echo $this->lineLink('users/uReals',$this->img('reals') . ' ' . $profile['reals'] . ' ');
     }
 }
 ?>

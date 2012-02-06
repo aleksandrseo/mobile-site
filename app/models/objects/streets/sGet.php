@@ -6,8 +6,6 @@ $objectId = $methods->request('streetId','string');
 $infoObject = $db->findOne('streets',array('_id' => new MongoId($objectId)));
 $filterUser['_Id'] = $db->findOneId('users',array('_id' => new MongoId($infoObject['keyUser'])));
 
-
-
 if ($filterUser['_Id'] == $profile['_id']) {
 
     // NO SQL
